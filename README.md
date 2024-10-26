@@ -2,7 +2,7 @@
 
 This small utility program allows a Bluetooth device to be paired to the current Linux operating system without breaking the pairing between the same device and a Windows operating system installed on the same machine. 
 
-To compile, simple run `make`.
+To compile, make sure you have GLib 2.0 installed first, then simply run `make`.
 
 Before executing the program, several conditions must be met:
 
