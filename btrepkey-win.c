@@ -1,6 +1,4 @@
 #include "btrepkey-win.h"
-#include <stdio.h>
-#include <string.h>
 
 G_DEFINE_QUARK (btrepkey_win_error_quark, btrepkey_win_error)
 
