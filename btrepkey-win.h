@@ -11,16 +11,18 @@
 #include <glib.h>
 #include <argp.h>
 
-#define BUF_SIZE 128
-#define BUF_MAX 512
-#define RESTART_MAX_TRIES 2
+#define CFG_PATH "/etc/btrepkey-win.cfg"
+#define UNEXP_ERR_MSG "An unexpected error has occurred"
+
+#define FBUFSIZ 512
+#define PTBUFSIZ 512
+#define WPATHSIZ 128
+
 #define MAC_LEN 17
 #define MAC_TRIM_LEN (MAC_LEN - 5)
 #define KEY_LEN 32
-#define CFG_PATH "/etc/btrepkey-win.cfg"
-#define WPATHSIZ 128
-#define FBUFSIZ 512
-#define UNEXP_ERR_MSG "An unexpected error has occurred"
+
+#define RESTART_MAX_TRIES 2
 #define BTREPKEY_WIN_ERROR btrepkey_win_error_quark()
 
 typedef enum {

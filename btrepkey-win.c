@@ -139,13 +139,13 @@ gboolean create_pty(int* fdmp, int* fdsp) {
 }
 
 char* read_ptm(int fdm) {
-    char *str = calloc(BUF_MAX + 1, sizeof(char));
+    char *str = calloc(PTBUFSIZ + 1, sizeof(char));
 
     if (str == NULL) {
         return NULL;
     }
 
-    char buf[BUF_MAX + 1] = "";
+    char buf[PTBUFSIZ + 1] = "";
     char c;
     int rc, i = 0;
     gboolean fr = TRUE;
@@ -158,9 +158,9 @@ char* read_ptm(int fdm) {
         }
 
         buf[i++] = c;
-        if (i == BUF_MAX) {
+        if (i == PTBUFSIZ) {
             strcat(str, buf);
-            str = realloc(str, strlen(str) + BUF_MAX + 1);
+            str = realloc(str, strlen(str) + PTBUFSIZ + 1);
             if (str == NULL) {
                 return NULL;
             }
