@@ -36,8 +36,31 @@ typedef enum {
     UM_WARNING
 } UserMessageType;
 
+static int parse_opts (int key, char *arg, struct argp_state *state);
+int btrepkey_win(char* devName);
+
+void print_message(UserMessageType umt, const char* format, ...);
+void set_error_fatal_unexp(GError** error);
+
+gboolean create_pty(int* fdmp, int* fdsp);
+char* read_ptm(int fdm);
+gboolean write_ptm_cmd(int fdm, char* format, ...);
+
+gboolean fetch_wpath(char *wpath);
+int fget_wpath(FILE* fp, char* wpath);
 int fsol(FILE* fp);
 int fscans(FILE* fp, char *s);
-int fget_wpath(FILE* fp, char* wpath);
 gboolean validate_wpath(char* wpath);
 int direxists(char* dirpath);
+
+gboolean fetch_btadap_macaddr(char* mac, int fdm, int fds);
+gboolean fetch_btdev_macaddr(char* mac, char* name, int fdm, int fds);
+void trim_macaddr(char *src, char *dst);
+
+void setup_exec_chntpw(gpointer user_data);
+int fetch_winkey(char* wpath, char* key, char* adapMac, char* devMac, int fdm, int fds);
+gboolean replace_linkey(char* key, char* adapMac, char* devMac);
+
+gboolean connect_btdev(char* macAddress);
+gboolean is_btserv_running(GError** error);
+gboolean restart_btserv();
