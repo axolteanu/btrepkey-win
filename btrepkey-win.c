@@ -446,12 +446,12 @@ int fetch_winkey(char* wpath, char* key, char* adapMac, char* devMac, int fdm, i
     char *sp = str;
     sscanf(str, "%*s%*s%*s%*s%*s%*s%*s%*s%*s%*s%*s %n", &offset);
     sp += offset;
-    for(int i = 0; i < 32; sp++) {
+    for(int i = 0; i < KEY_LEN; sp++) {
         if(*sp != ' ') {
             key[i++] = *sp;
         }
     }
-    key[32] = '\0';
+    key[KEY_LEN] = '\0';
 
     free(str);
 
